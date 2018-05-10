@@ -72,6 +72,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/colorAccent"
                 android:text="@string/action_sign_in"
+                android:textColor="@android:color/background_light"
                 android:textStyle="bold" />
 
         </LinearLayout>

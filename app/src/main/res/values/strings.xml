@@ -21,5 +21,24 @@
     <string name="cards">Karty kredytowe</string>
     <string name="credits">Kredyty</string>
     <string name="investments">Lokaty</string>
+    <string name="title_activity_operations">OperationsActivity</string>
+
+
+    <!-- Operations activity -->
+    <string name="action_settings">Ustawienie</string>
+    <string name="section_format">Witam z sekcji nr: %1$d</string>
+    <string name="tab_text_1_operations">Saldo</string>
+    <string name="tab_text_2_operations">@string/operations</string>
+    <string name="account_selection">Wybierz konto</string>
+
+    <!-- For interface only spinner of accounts -->
+    <string-array name="accounts_array">
+        <item>Standard 12 0000 00000 00000 00000 00000</item>
+        <item>Premium 32 0000 00000 00000 00000 00000</item>
+        <item>Super Hiper 31 0000 00000 00000 00000 00000</item>
+    </string-array>
+    <string name="account_state">Stan konta</string>
+    <string name="account_limit">Limit miesięczny</string>
+    <string name="account_limit_use">Pozostało</string>
 
 </resources>

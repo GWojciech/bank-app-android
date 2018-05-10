@@ -24,7 +24,11 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".MenuActivity" />
+        <activity
+            android:name=".OperationsActivity"
+            android:label="@string/title_activity_operations"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

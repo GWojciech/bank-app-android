@@ -30,10 +30,11 @@
                 android:background="@color/colorAccent" />
 
             <Button
-                android:id="@+id/buttonOperations"
+                android:id="@+id/operations_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/baseline_account_balance_black_18"
                 android:text="@string/operations"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -51,10 +52,11 @@
                 android:background="@color/colorAccent" />
 
             <Button
-                android:id="@+id/buttonBankTransfer"
+                android:id="@+id/bank_transfer_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/baseline_compare_arrows_black_18"
                 android:text="@string/bank_transfer"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -72,10 +74,11 @@
                 android:background="@color/colorAccent" />
 
             <Button
-                android:id="@+id/buttonCards"
+                android:id="@+id/cards_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/baseline_credit_card_black_18"
                 android:text="@string/cards"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -93,10 +96,11 @@
                 android:background="@color/colorAccent" />
 
             <Button
-                android:id="@+id/buttonCredits"
+                android:id="@+id/credits_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/baseline_credit_card_black_18"
                 android:text="@string/credits"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -114,10 +118,11 @@
                 android:background="@color/colorAccent" />
 
             <Button
-                android:id="@+id/buttonInvestments"
+                android:id="@+id/button_investments"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/baseline_assessment_black_18"
                 android:text="@string/investments"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
