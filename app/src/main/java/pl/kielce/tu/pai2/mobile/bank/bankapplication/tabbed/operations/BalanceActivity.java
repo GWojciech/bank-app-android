@@ -30,6 +30,8 @@ public class BalanceActivity extends Fragment implements AdapterView.OnItemSelec
 
     }
 
+
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -39,4 +41,5 @@ public class BalanceActivity extends Fragment implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
 }

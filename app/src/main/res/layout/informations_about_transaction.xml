@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dip">
+
+    <TextView
+        android:id="@+id/date_of_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Data : "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/recipient_of_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/date_of_transaction"
+        android:layout_below="@+id/date_of_transaction"
+        android:text="Odbiorca: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/sender_of_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/recipient_of_transaction"
+        android:layout_below="@+id/recipient_of_transaction"
+        android:text="Nadawca: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/title_of_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sender_of_transaction"
+        android:layout_below="@+id/sender_of_transaction"
+        android:text="Tytuł: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/amount_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/title_of_transaction"
+        android:layout_below="@+id/title_of_transaction"
+        android:text="Kwota: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/balance_after_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/amount_transaction"
+        android:layout_below="@+id/amount_transaction"
+        android:text="Saldo: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/sender_transaction_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sender_of_transaction"
+        android:layout_alignBottom="@+id/sender_of_transaction"
+        android:layout_toRightOf="@+id/sender_of_transaction"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/title_transaction_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/title_of_transaction"
+        android:layout_alignBottom="@+id/title_of_transaction"
+        android:layout_alignLeft="@+id/sender_transaction_TextView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/recipient_transaction_recipient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sender_of_transaction"
+        android:layout_toRightOf="@+id/sender_of_transaction"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/date_transaction_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recipient_of_transaction"
+        android:layout_alignLeft="@+id/recipient_transaction_recipient"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/amount_transaction_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/amount_transaction"
+        android:layout_alignBottom="@+id/title_of_transaction"
+        android:layout_alignLeft="@+id/sender_transaction_TextView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/balance_transaction_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/balance_after_transaction"
+        android:layout_alignBottom="@+id/title_of_transaction"
+        android:layout_alignLeft="@+id/sender_transaction_TextView"
+        android:text="TextView" />
+
+</RelativeLayout>
