@@ -7,11 +7,10 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-
 import java.util.ArrayList;
+
 
 import pl.kielce.tu.pai2.mobile.bank.bankapplication.R;
 import pl.kielce.tu.pai2.mobile.bank.bankapplication.model.Transaction;
@@ -44,6 +43,7 @@ public class HistoryActivity extends Fragment {
         transactionList.add(transaction);
         transaction = new Transaction("10/01/2015", "Szymon Jarząbek", "Wojciech Gołąbek", "Za milczenie", 21.32, 432.21);
         transactionList.add(transaction);
+
 
         final TransactionAdapter transactionAdapter = new TransactionAdapter(view.getContext(), R.layout.informations_about_transaction, transactionList);
         ListView listView = (ListView) view.findViewById(R.id.listViewHistory);

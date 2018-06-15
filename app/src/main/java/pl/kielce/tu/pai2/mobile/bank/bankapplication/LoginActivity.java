@@ -30,8 +30,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import pl.kielce.tu.pai2.mobile.bank.bankapplication.services.InputStreamStringConverter;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -302,26 +314,90 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mUser = email;
             mPassword = password;
         }
+         String findRole(String url){
+
+            try {
+                URL urlAddress = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) urlAddress.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("Content-Type", "application/json");
+                connection.setRequestProperty("Accept", "application/json");
+                connection.setDoInput(true);
+                connection.setDoOutput(false);
+                InputStream in = new BufferedInputStream(connection.getInputStream());
+                    String result = InputStreamStringConverter.streamToString(in);
+                    in.close();
+                    return result;
+                } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
+             return null;
+         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
             try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
 
-                if (mUser.equals(mPassword)) {
-                    // Account exists, return true if the password matches.
-                    return true;
+                URL url = new URL(getString(R.string.URL_address)+"/login");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setRequestProperty("Content-Type", "application/json");
+                connection.setRequestProperty("Accept", "application/json");
+                connection.setDoOutput(true);
+                connection.setDoInput(true);
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("username", mUserView.getText());
+                jsonObject.put("password", mPasswordView.getText());
+                DataOutputStream os = new DataOutputStream(connection.getOutputStream());
+
+                os.writeBytes(jsonObject.toString());
+                os.flush();
+                os.close();
+
+                if(connection.getResponseCode()==200){
+
+                    InputStream in = new BufferedInputStream(connection.getInputStream());
+                    String text = InputStreamStringConverter.streamToString(in);
+                    in.close();
+                    jsonObject = new JSONObject(text);
+                    Integer idUser = jsonObject.optInt("idUser");
+                    connection.disconnect();
+                    jsonObject = new JSONObject(findRole(getString(R.string.URL_address)+"/login/" + idUser.toString()));
+                    if(jsonObject.optString("message").equals("CLIENT")){
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                else{
+                    connection.disconnect();
+                    return false;
                 }
 
 
+
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                return  false;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return  false;
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return  false;
+
+            }
+
+
             // TODO: register the new account here.
-            return false;
+//            return false;
         }
 
         @Override

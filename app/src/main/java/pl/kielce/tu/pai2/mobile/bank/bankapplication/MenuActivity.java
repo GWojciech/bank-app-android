@@ -16,11 +16,19 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void initListeners(){
-        Button operationsButton = (Button) findViewById(R.id.operations_button);
-        operationsButton.setOnClickListener(new View.OnClickListener() {
+        Button button = (Button) findViewById(R.id.operations_button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MenuActivity.this, OperationsActivity.class));
+            }
+        });
+
+        button = (Button) findViewById(R.id.bank_transfer_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MenuActivity.this, BankTransferActivity.class));
             }
         });
     }
