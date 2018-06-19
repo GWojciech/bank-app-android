@@ -39,7 +39,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editText10"
+                    android:id="@+id/amount_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -47,15 +47,15 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/account_number_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Numer konta"
-                    android:inputType="textCapWords|numberSigned" />
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/editText4"
+                    android:id="@+id/recipient_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -63,7 +63,7 @@
                     android:inputType="textCapWords|textPersonName" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/street_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -71,7 +71,7 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/editText6"
+                    android:id="@+id/postal_number_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -79,7 +79,7 @@
                     android:inputType="textPostalAddress" />
 
                 <EditText
-                    android:id="@+id/editText9"
+                    android:id="@+id/city_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -87,7 +87,7 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/editText8"
+                    android:id="@+id/description_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
