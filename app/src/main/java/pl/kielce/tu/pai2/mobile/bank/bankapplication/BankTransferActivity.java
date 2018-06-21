@@ -151,8 +151,8 @@ public class BankTransferActivity extends AppCompatActivity {
 //                    jsonObjectToAccount.put("idInternalAccount", null);
 //                    jsonObjectToAccount.put("idExternalAccount", null);
                 bankTransfer.put("fromAccount", bankAccounts.getJSONObject(0));
-                bankTransfer.put("dateOfOrder", new SimpleDateFormat("dd.MM.yyyy").format(new java.util.Date()));
-                bankTransfer.put("dateOfExecution", new SimpleDateFormat("dd.MM.yyyy").format(new java.util.Date()));
+                bankTransfer.put("dateOfOrder", new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date()));
+                bankTransfer.put("dateOfExecution", new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date()));
                 bankTransfer.put("recipient",mRecipient.getText().toString() );
                 bankTransfer.put("amount", mAmount.getText().toString());
                 bankTransfer.put("address", city.getText().toString()+", "+mStreet.getText().toString()+" ,"+mPostalCode.getText().toString());

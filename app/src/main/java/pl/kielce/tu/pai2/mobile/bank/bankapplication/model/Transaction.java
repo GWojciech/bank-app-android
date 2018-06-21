@@ -6,10 +6,10 @@ public class Transaction {
     private String recipient;
     private String sender;
     private String title;
-    private Double amount;
-    private Double balance;
+    private String amount;
+    private String balance;
 
-    public Transaction(String date, String recipient, String sender, String title, Double amount, Double balance) {
+    public Transaction(String date, String recipient, String sender, String title, String amount, String balance) {
         this.date = date;
         this.recipient = recipient;
         this.sender = sender;
@@ -50,19 +50,19 @@ public class Transaction {
         this.title = title;
     }
 
-    public Double getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public Double getBalance() {
+    public String getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(String balance) {
         this.balance = balance;
     }
 

@@ -39,7 +39,7 @@
         <item>Super Hiper 31 0000 00000 00000 00000 00000</item>
     </string-array>
     <string name="account_state">Stan konta</string>
-    <string name="account_limit">Limit miesięczny</string>
-    <string name="account_limit_use">Pozostało</string>
+    <string name="account_limit_day">Limit dzienny</string>
+    <string name="account_limit_month">Limit miesięczny</string>
 
 </resources>
