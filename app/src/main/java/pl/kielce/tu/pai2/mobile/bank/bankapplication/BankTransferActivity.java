@@ -1,14 +1,12 @@
 package pl.kielce.tu.pai2.mobile.bank.bankapplication;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,8 +20,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 import pl.kielce.tu.pai2.mobile.bank.bankapplication.dialog.VerificationCodeDialog;
@@ -38,7 +34,6 @@ public class BankTransferActivity extends AppCompatActivity {
     private EditText mStreet;
     private EditText mPostalCode;
     private EditText city;
-    private boolean decision;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,17 +46,10 @@ public class BankTransferActivity extends AppCompatActivity {
     private void initListener() {
         Button button = (Button) findViewById(R.id.next_bank_tranfer_button);
         button.setOnClickListener(new View.OnClickListener() {
-
-
-
             @Override
             public void onClick(View v) {
                 if(isAmountValid()&&isAccountNumberValid()&&isOtherFieldsValid()) {
                     new BankTransferTask().execute((Void) null);
-                    if(decision) {
-                        VerificationCodeDialog verificationCodeDialog = new VerificationCodeDialog();
-                        verificationCodeDialog.show(getSupportFragmentManager(), "Dialog");
-                    }
                 }
             }
         });
@@ -114,11 +102,13 @@ public class BankTransferActivity extends AppCompatActivity {
         }
     }
 
+
+
     public class BankTransferTask extends AsyncTask<Void, Void, Boolean> {
 
 
-        JSONArray bankAccounts;
-
+        private JSONArray bankAccounts=null;
+        private JSONObject bankTransfer=null;
 
         JSONArray getClientBankAccounts(){
             URL url = null;
@@ -154,7 +144,26 @@ public class BankTransferActivity extends AppCompatActivity {
             return null;
             }
 
-            void send() {
+            void setBankTransfer() throws JSONException {
+                bankTransfer = new JSONObject();
+                JSONObject jsonObjectToAccount = new JSONObject();
+                jsonObjectToAccount.put("recipientAccount", mAccountNumber.getText().toString());
+//                    jsonObjectToAccount.put("idInternalAccount", null);
+//                    jsonObjectToAccount.put("idExternalAccount", null);
+                bankTransfer.put("fromAccount", bankAccounts.getJSONObject(0));
+                bankTransfer.put("dateOfOrder", new SimpleDateFormat("dd.MM.yyyy").format(new java.util.Date()));
+                bankTransfer.put("dateOfExecution", new SimpleDateFormat("dd.MM.yyyy").format(new java.util.Date()));
+                bankTransfer.put("recipient",mRecipient.getText().toString() );
+                bankTransfer.put("amount", mAmount.getText().toString());
+                bankTransfer.put("address", city.getText().toString()+", "+mStreet.getText().toString()+" ,"+mPostalCode.getText().toString());
+                bankTransfer.put("description",mDescription.getText().toString());
+                bankTransfer.put("state","CREATE");
+                bankTransfer.put("amountStateBefore", bankAccounts.getJSONObject(0).getString("amount"));
+                bankTransfer.put("toAccount", jsonObjectToAccount);
+            }
+
+
+            void send(String urlAddress) {
                 URL url = null;
                 mAmount = findViewById(R.id.amount_EditText);
                 mAccountNumber = findViewById(R.id.account_number_EditText);
@@ -165,39 +174,27 @@ public class BankTransferActivity extends AppCompatActivity {
                 city = findViewById(R.id.city_EditText);
                 try {
 
-                    url = new URL(getString(R.string.URL_address) + "/transfer/register");
+                    url = new URL(getString(R.string.URL_address) + urlAddress);
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
-                    connection.setRequestProperty("Content-Type", "text/plain");
-                    connection.setRequestProperty("Accept",  "text/plain");
-                    connection.setRequestProperty("Response-Type", "text/plain");
+                    connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
                     connection.setDoOutput(true);
                     connection.setDoInput(true);
-                    JSONObject jsonObject = new JSONObject();
-                    JSONObject jsonObjectToAccount = new JSONObject();
-                    jsonObjectToAccount.put("recipientAccount", mAccountNumber.getText().toString());
-//                    jsonObjectToAccount.put("idInternalAccount", null);
-//                    jsonObjectToAccount.put("idExternalAccount", null);
-                    jsonObject.put("fromAccount", bankAccounts.getJSONObject(0));
-                    jsonObject.put("dateOfOrder", new SimpleDateFormat("dd-MM-yyyy").format(new java.util.Date()));
-                    jsonObject.put("dateOfExecution", new SimpleDateFormat("dd-MM-yyyy").format(new java.util.Date()));
-                    jsonObject.put("recipient",mRecipient.getText().toString() );
-                    jsonObject.put("amount", mAmount.getText().toString());
-                    jsonObject.put("address", city.getText().toString()+", "+mStreet.getText().toString()+" ,"+mPostalCode.getText().toString());
-                    jsonObject.put("description",mDescription.getText().toString());
-                    jsonObject.put("state","CURRENT");
-                    jsonObject.put("amountStateBefore", bankAccounts.getJSONObject(0).getString("amount"));
-                    jsonObject.put("toAccount", jsonObjectToAccount);
+                    setBankTransfer();
                     DataOutputStream os = new DataOutputStream(connection.getOutputStream());
-                    os.writeBytes(URLEncoder.encode(jsonObject.toString(),"UTF-8"));
+                    os.write(bankTransfer.toString().getBytes("UTF-8"));
                     os.flush();
                     os.close();
-                    if(connection.getResponseCode()==200){
-
+                    if(connection.getResponseCode()==200) {
                         InputStream in = new BufferedInputStream(connection.getInputStream());
                         String text = InputStreamStringConverter.streamToString(in);
                         in.close();
                     }
+
+                    else {
+                        Log.d("Response: ", String.valueOf(connection.getResponseCode()));
+                    }
+
                     connection.disconnect();
 
 
@@ -214,12 +211,10 @@ public class BankTransferActivity extends AppCompatActivity {
             }
                 @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
+                    // TODO: attempt authentication against a network service.
 
-            bankAccounts = getClientBankAccounts();
-            send();
-
-
+                    bankAccounts = getClientBankAccounts();
+                    send("/transfer/register");
             // TODO: register the new account here.
             return true;
         }
@@ -228,10 +223,8 @@ public class BankTransferActivity extends AppCompatActivity {
         protected void onPostExecute(final Boolean success) {
 
             if (success) {
-                decision = true;
                 //finish();
             } else {
-                decision=false;
             }
         }
 

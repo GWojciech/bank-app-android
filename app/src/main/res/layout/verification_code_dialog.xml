@@ -8,11 +8,19 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number" />
+            android:hint="Kod weryfikacyjny"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/acceptveriification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
     </LinearLayout>
 
 </RelativeLayout>
