@@ -11,31 +11,35 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ProgressBar
+            android:id="@+id/progress_bankTransfer"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
         <TextView
-            android:id="@+id/balance_textView"
+            android:id="@+id/bankTransfer_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/account_selection"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
-
-        <Spinner
-            android:id="@+id/spinner_balance"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:entries="@array/accounts_array"
-            android:text="@+id/spinner_balance" />
+            android:textSize="18sp"
+            tools:text="Wykonaj przelew" />
 
         <ScrollView
             android:id="@+id/scroll_balance"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <EditText
@@ -94,17 +98,37 @@
                     android:hint="Opis"
                     android:inputType="textCapCharacters|textPersonName" />
 
+                <EditText
+                    android:id="@+id/verification_code_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Wprowadź kod"
+                    android:inputType="textPersonName"
+                    android:visibility="gone" />
+
                 <Button
                     android:id="@+id/next_bank_tranfer_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/colorAccent"
                     android:paddingLeft="50dp"
                     android:paddingRight="50dp"
                     android:text="Dalej"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@android:color/background_light"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/execute_bank_transfer_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorAccent"
+                    android:text="Wykonaj"
+                    android:textColor="@android:color/background_light"
+                    android:visibility="gone" />
             </LinearLayout>
         </ScrollView>
 
