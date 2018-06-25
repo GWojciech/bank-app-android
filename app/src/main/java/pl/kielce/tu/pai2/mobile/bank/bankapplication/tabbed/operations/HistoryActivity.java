@@ -25,7 +25,6 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 
-
 import pl.kielce.tu.pai2.mobile.bank.bankapplication.LoginActivity;
 import pl.kielce.tu.pai2.mobile.bank.bankapplication.R;
 import pl.kielce.tu.pai2.mobile.bank.bankapplication.model.Transaction;

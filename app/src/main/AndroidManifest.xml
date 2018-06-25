@@ -31,7 +31,9 @@
             android:label="@string/title_activity_operations"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".BankTransferActivity" />
-        <activity android:name=".MockActivity"></activity>
+        <activity android:name=".MockActivity" />
+        <activity android:name=".CreditCardActivity" />
+        <activity android:name=".ChangePinActivity"></activity>
     </application>
 
 </manifest>

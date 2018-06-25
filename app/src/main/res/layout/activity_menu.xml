@@ -93,7 +93,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="15dp"
-                android:background="@color/colorAccent" />
+                android:background="@color/colorAccent"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/credits_button"
@@ -102,20 +103,23 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/baseline_assessment_black_18"
                 android:text="@string/credits"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:visibility="gone" />
 
             <View
                 android:id="@+id/divider8"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorAccent" />
+                android:background="@color/colorAccent"
+                android:visibility="gone" />
 
             <View
                 android:id="@+id/divider9"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="15dp"
-                android:background="@color/colorAccent" />
+                android:background="@color/colorAccent"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/button_investments"
@@ -124,13 +128,15 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/baseline_account_balance_wallet_black_18"
                 android:text="@string/investments"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:visibility="gone" />
 
             <View
                 android:id="@+id/divider10"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorAccent" />
+                android:background="@color/colorAccent"
+                android:visibility="gone" />
 
         </LinearLayout>
     </ScrollView>

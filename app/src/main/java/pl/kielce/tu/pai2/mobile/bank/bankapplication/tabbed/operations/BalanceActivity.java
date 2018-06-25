@@ -3,29 +3,21 @@ package pl.kielce.tu.pai2.mobile.bank.bankapplication.tabbed.operations;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 
 import pl.kielce.tu.pai2.mobile.bank.bankapplication.LoginActivity;
 import pl.kielce.tu.pai2.mobile.bank.bankapplication.R;
@@ -42,8 +34,8 @@ public class BalanceActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_tabbed_operations_balance, container, false);
         mAmount = rootView.findViewById(R.id.balance_account_state_balance2);
-        mMonthLimit = rootView.findViewById(R.id.balance_account_state_balance4);
-        mDayLimit = rootView.findViewById(R.id.balance_account_state_balance6);
+        mDayLimit = rootView.findViewById(R.id.balance_account_state_balance4);
+        mMonthLimit = rootView.findViewById(R.id.balance_account_state_balance6);
         mAccountNumber = rootView.findViewById(R.id.balance_textView);
         new BalanceTask().execute((Void)null);
 
