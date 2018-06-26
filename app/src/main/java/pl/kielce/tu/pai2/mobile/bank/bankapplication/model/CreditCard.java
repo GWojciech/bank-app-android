@@ -10,8 +10,9 @@ public class CreditCard {
     private String type;
     private Double dayLimit;
     private Double monthLimit;
+    private Integer idBankAccount;
 
-    public CreditCard(Integer idCreditCard, String name, String creditCardNumber, String pinCode, String state, String expirationDate, String type, Double dayLimit, Double monthLimit) {
+    public CreditCard(Integer idCreditCard, String name, String creditCardNumber, String pinCode, String state, String expirationDate, String type, Double dayLimit, Double monthLimit, Integer idBankAccount) {
         this.idCreditCard = idCreditCard;
         this.name = name;
         this.creditCardNumber = creditCardNumber;
@@ -21,6 +22,7 @@ public class CreditCard {
         this.type = type;
         this.dayLimit = dayLimit;
         this.monthLimit = monthLimit;
+        this.idBankAccount = idBankAccount;
     }
 
     public Integer getIdCreditCard() {
@@ -93,5 +95,13 @@ public class CreditCard {
 
     public void setMonthLimit(Double monthLimit) {
         this.monthLimit = monthLimit;
+    }
+
+    public Integer getIdBankAccount() {
+        return idBankAccount;
+    }
+
+    public void setIdBankAccount(Integer idBankAccount) {
+        this.idBankAccount = idBankAccount;
     }
 }

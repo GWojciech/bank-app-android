@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import pl.kielce.tu.pai2.mobile.bank.bankapplication.ChangePinActivity;
+import pl.kielce.tu.pai2.mobile.bank.bankapplication.ManagementCardActivity;
 import pl.kielce.tu.pai2.mobile.bank.bankapplication.R;
 
 public class CreditCardAdapter extends ArrayAdapter<CreditCard> {
@@ -32,7 +32,7 @@ public class CreditCardAdapter extends ArrayAdapter<CreditCard> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull final ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull final ViewGroup parent) {
 
         final LayoutInflater trainingInflater = LayoutInflater.from(getContext());
         final View transactionView = trainingInflater.inflate(R.layout.information_about_credit_cards, parent, false);
@@ -59,10 +59,10 @@ public class CreditCardAdapter extends ArrayAdapter<CreditCard> {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(transactionView.getContext(), ChangePinActivity.class);
-                intent.putExtra("cardId", creditCard.getIdCreditCard());
-                intent.putExtra("pinCode", creditCard.getPinCode());
-                intent.putExtra("cardNumber", creditCard.getCreditCardNumber());
+                Intent intent = new Intent(transactionView.getContext(), ManagementCardActivity.class);
+                intent.putExtra("idBankAccount", creditCard.getIdBankAccount());
+                intent.putExtra("index", position);
+                intent.putExtra("creditCardNumber", creditCard.getCreditCardNumber());
                 parent.getContext().startActivity(intent);
 
             }

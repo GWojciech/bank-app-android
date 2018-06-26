@@ -33,7 +33,7 @@
         <activity android:name=".BankTransferActivity" />
         <activity android:name=".MockActivity" />
         <activity android:name=".CreditCardActivity" />
-        <activity android:name=".ChangePinActivity"></activity>
+        <activity android:name=".ManagementCardActivity"></activity>
     </application>
 
 </manifest>

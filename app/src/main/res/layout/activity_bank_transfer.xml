@@ -25,10 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="@string/account_selection"
+            android:text="Wykonaj przelew"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
-            tools:text="Wykonaj przelew" />
+            android:textSize="18sp" />
 
         <ScrollView
             android:id="@+id/scroll_balance"
@@ -72,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Ulica"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textPersonName" />
 
                 <EditText
                     android:id="@+id/postal_number_EditText"
@@ -80,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Kod pocztowy"
-                    android:inputType="textPostalAddress" />
+                    android:inputType="textCapWords|textPostalAddress" />
 
                 <EditText
                     android:id="@+id/city_EditText"
@@ -88,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Miejscowość"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords|textPersonName" />
 
                 <EditText
                     android:id="@+id/description_EditText"
@@ -96,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Opis"
-                    android:inputType="textCapCharacters|textPersonName" />
+                    android:inputType="textCapWords|textPersonName" />
 
                 <EditText
                     android:id="@+id/verification_code_editText"

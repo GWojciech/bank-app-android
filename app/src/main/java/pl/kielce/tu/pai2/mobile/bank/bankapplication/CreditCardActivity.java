@@ -115,6 +115,7 @@ public class CreditCardActivity extends AppCompatActivity {
                 String type;
                 Double dayLimit;
                 Double monthLimit;
+                Integer idBankAccount;
 
                 try {
                 for(int i=0; i<jsonArray.length(); i++){
@@ -128,7 +129,8 @@ public class CreditCardActivity extends AppCompatActivity {
                     type = jsonObject.getString("type");
                     dayLimit = jsonObject.getDouble("dayLimit");
                     monthLimit = jsonObject.getDouble("monthLimit");
-                    creditCard = new CreditCard(idCreditCard, name, creditCardNumber, pinCode, state, expirationDate, type, dayLimit, monthLimit);
+                    idBankAccount = jsonObject.getJSONObject("idBankAccount").getInt("idBankAccount");
+                    creditCard = new CreditCard(idCreditCard, name, creditCardNumber, pinCode, state, expirationDate, type, dayLimit, monthLimit, idBankAccount);
                     creditCardList.add(creditCard);
                     }
                     displayListView();

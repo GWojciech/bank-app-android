@@ -236,9 +236,10 @@ public class BankTransferActivity extends AppCompatActivity {
                 bankTransfer.put("amount", mAmount.getText().toString());
                 bankTransfer.put("address", city.getText().toString()+", "+mStreet.getText().toString()+" ,"+mPostalCode.getText().toString());
                 bankTransfer.put("description",mDescription.getText().toString());
-                bankTransfer.put("state","CREATE");
+                bankTransfer.put("state","CREATED");
                 bankTransfer.put("amountStateBefore", bankAccounts.getJSONObject(0).getString("amount"));
                 bankTransfer.put("toAccount", jsonObjectToAccount);
+                bankTransfer.put("type", "Zewnętrzny");
             }
 
 
